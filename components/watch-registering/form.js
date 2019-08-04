@@ -71,15 +71,10 @@ const CssSelectorRow = () => (
 )
 
 const AddCssSelectorRow = () => (
-  <div className='field is-grouped'>
-    <div className='control is-expanded'>
-      <input className='input' disabled />
-    </div>
-    <div className='control'>
-      <button className='button is-dark'>
-        <ion-icon name='add' />
-      </button>
-    </div>
+  <div className='control'>
+    <button className='button is-fullwidth is-dark'>
+      <ion-icon name='add' />
+    </button>
   </div>
 )
 
