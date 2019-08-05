@@ -24,7 +24,7 @@ const Form = () => {
   }, [url, interval, cssSelectors])
 
   return (
-    <form>
+    <form onSubmit={(ev) => ev.preventDefault()}>
       <UrlField value={url} onChange={changeUrl} />
       <IntervalField value={interval} onChange={changeInterval} />
       <CssSelectorsField value={cssSelectors} onChange={dispatchCssSelectors} />
@@ -52,6 +52,7 @@ const UrlField = (props) => (
         placeholder='https://example.com'
         value={props.value}
         onChange={(ev) => props.onChange(ev.target.value)}
+        required
       />
     </div>
   </div>
@@ -65,8 +66,10 @@ const IntervalField = (props) => (
         className='input'
         type='number'
         min={15 * 60}
+        step={1}
         value={props.value}
-        onChange={(ev) => props.onChange(ev.target.value)}
+        onChange={(ev) => props.onChange(parseInt(ev.target.value))}
+        required
       />
     </div>
     <p className='help'>
@@ -111,6 +114,7 @@ const CssSelectorRow = (props) => {
           placeholder='Unique name'
           value={name}
           onChange={(ev) => props.onChange({ selector, type, name: ev.target.value })}
+          required
         />
       </div>
       <div className='control'>
@@ -120,6 +124,7 @@ const CssSelectorRow = (props) => {
           placeholder='#id.a-class'
           value={selector}
           onChange={(ev) => props.onChange({ selector: ev.target.value, type, name })}
+          required
         />
       </div>
       <div className='control'>
