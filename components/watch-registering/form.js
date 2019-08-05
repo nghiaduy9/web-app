@@ -1,7 +1,10 @@
-import { useReducer, useState } from 'react'
+import { useCallback, useReducer, useState } from 'react'
+import axios from 'axios'
 import { secondsToHumanTime } from '../../utils'
 
 const Form = () => {
+  const [url, changeUrl] = useState('')
+  const [interval, changeInterval] = useState() // in seconds
   const [cssSelectors, dispatchCssSelectors] = useReducer(
     (state, change) => {
       const [i, newValue] = change
@@ -11,17 +14,25 @@ const Form = () => {
     },
     [{ selector: '', type: 'string', name: '' }]
   )
-  const [url, changeUrl] = useState('')
-  const [interval, changeInterval] = useState() // in seconds
+  const submit = useCallback(() => {
+    const cssSelectorsObj = cssSelectors.reduce((result, cssSelector) => {
+      const { selector, type } = cssSelector
+      result[selector] = type
+      return result
+    }, {})
+    axios.post('/api/watch-manager', { url, interval, cssSelectors: cssSelectorsObj })
+  }, [url, interval, cssSelectors])
 
   return (
-    <form onSubmit={(ev) => ev.preventDefault()}>
+    <form>
       <UrlField value={url} onChange={changeUrl} />
       <IntervalField value={interval} onChange={changeInterval} />
       <CssSelectorsField value={cssSelectors} onChange={dispatchCssSelectors} />
       <div className='field is-grouped'>
         <div className='control'>
-          <button className='button is-primary'>Submit</button>
+          <button className='button is-primary' onClick={submit}>
+            Submit
+          </button>
         </div>
         <div className='control'>
           <button className='button is-danger is-outlined'>Reset</button>
