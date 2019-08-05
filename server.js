@@ -1,6 +1,7 @@
 require('dotenv-flow').config()
 
 const express = require('express')
+const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
 
@@ -14,6 +15,7 @@ const main = async () => {
     const server = express()
     await app.prepare()
 
+    server.use(bodyParser.json())
     server.use('/api', apiRouter)
     server.get('*', (req, res) => handle(req, res))
 
