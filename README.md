@@ -21,5 +21,10 @@ $ yarn start # yarn dev for development
 
 - `NODE_ENV` (string): "development" or "production" environment
 - `PORT` (number): Port number to run the server
+- `WATCH_MANAGER_ADDRESS` (string): Address of watch manager service
 
 ### API Routes
+
+#### `/api/watch-manager`
+
+> Redirect to [watch manager service routes](https://github.com/night-watch-project/watch-manager#routes)
