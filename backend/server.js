@@ -1,5 +1,6 @@
 require('dotenv-flow').config()
 
+const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const next = require('next')
@@ -7,7 +8,10 @@ const apiRouter = require('./api/router')
 
 const { NODE_ENV, PORT } = process.env
 
-const app = next({ dev: NODE_ENV !== 'production' })
+const app = next({
+  dev: NODE_ENV !== 'production',
+  dir: path.join(__dirname, '..', 'frontend')
+})
 const handle = app.getRequestHandler()
 
 const main = async () => {
