@@ -5,6 +5,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
+const rootRouter = require('./router')
 
 const { NODE_ENV, PORT } = process.env
 
@@ -21,6 +22,7 @@ const main = async () => {
 
     server.use(bodyParser.json())
     server.use('/api', apiRouter)
+    server.use('/', rootRouter)
     server.get('*', (req, res) => handle(req, res))
 
     server.listen(PORT, (err) => {
