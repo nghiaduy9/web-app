@@ -9,9 +9,9 @@
   "main": "pages/index.js",
   "scripts": {
     "clean": "rm -r .next node_modules",
-    "dev": "NODE_ENV=development node server",
+    "dev": "NODE_ENV=development node backend/server",
     "build": "next build",
-    "start": "NODE_ENV=production node server"
+    "start": "NODE_ENV=production node backend/server"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",

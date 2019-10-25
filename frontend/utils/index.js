@@ -26,4 +26,4 @@ const secondsToHumanTime = (s) => {
   return `${days} ${hours} ${minutes} ${seconds}`
 }
 
-module.exports = { secondsToHumanTime }
+export { secondsToHumanTime }

@@ -1,15 +1,20 @@
 require('dotenv-flow').config()
 
+const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
 const passport = require('passport')
 const session = require('express-session')
+const rootRouter = require('./router')
 
 const { NODE_ENV, PORT } = process.env
 
-const app = next({ dev: NODE_ENV !== 'production' })
+const app = next({
+  dev: NODE_ENV !== 'production',
+  dir: path.join(__dirname, '..', 'frontend')
+})
 const handle = app.getRequestHandler()
 
 const main = async () => {
@@ -25,6 +30,7 @@ const main = async () => {
     server.use(session({
       secret: "secret"
     }))
+    server.use('/', rootRouter)
     server.get('*', (req, res) => handle(req, res))
 
     server.listen(PORT, (err) => {
