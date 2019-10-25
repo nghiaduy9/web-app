@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const axios = require('axios')
+const passport = require('../config/passport')(passport)
 
 const { WATCH_MANAGER_ADDRESS } = process.env
 const router = Router()
@@ -21,5 +22,10 @@ router.post('/watch-manager', async (req, res) => {
     res.sendStatus(500)
   }
 })
+
+router.get('/auth/facebook', passport.authenticate('facebook'))
+router.get('/auth/facebook/cb', passport.authenticate('facebook', {
+  failureRedirect: '/', successRedirect: '/'
+}))
 
 module.exports = router
