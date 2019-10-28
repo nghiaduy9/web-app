@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
 const passport = require('passport')
+require('./configs/passport')(passport)
 const session = require('express-session')
 const rootRouter = require('./router')
 

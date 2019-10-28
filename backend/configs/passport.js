@@ -27,6 +27,19 @@ passport.deserializeUser((id, done) => {
     done(null, user)
 })
 
-module.exports = function() {
-  
+module.exports = function(passport) {
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: FACEBOOK_APP_ID,
+        clientSecret: FACEBOOK_APP_SECRET,
+        callbackURL: FACEBOOK_CALLBACK_URL,
+        profileFields: ['email']
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        console.log(profile)
+        done(null, user)
+      }
+    )
+  )
 }

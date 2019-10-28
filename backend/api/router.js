@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const axios = require('axios')
-const passport = require('../config/passport')(passport)
+const passport = require('passport')
 
 const { WATCH_MANAGER_ADDRESS } = process.env
 const router = Router()
