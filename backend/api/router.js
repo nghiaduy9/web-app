@@ -5,7 +5,7 @@ const passport = require('passport')
 const { WATCH_MANAGER_ADDRESS } = process.env
 const router = Router()
 
-router.get('/watch-manager', async (req, res) => {
+router.get('/watch-manager', passport.authenticate('jwt', {session: false}), async (req, res) => {
   try {
     const { data } = await axios.get(WATCH_MANAGER_ADDRESS)
     res.json(data)
@@ -14,7 +14,7 @@ router.get('/watch-manager', async (req, res) => {
   }
 })
 
-router.post('/watch-manager', async (req, res) => {
+router.post('/watch-manager', passport.authenticate('jwt', {session: false}), async (req, res) => {
   try {
     const { data } = await axios.post(WATCH_MANAGER_ADDRESS, req.body)
     res.json(data)
@@ -23,9 +23,14 @@ router.post('/watch-manager', async (req, res) => {
   }
 })
 
-router.get('/auth/facebook', passport.authenticate('facebook'))
-router.get('/auth/facebook/cb', passport.authenticate('facebook', {
-  failureRedirect: '/', successRedirect: '/'
-}))
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }))
+router.get(
+  '/auth/facebook/cb',
+  passport.authenticate('facebook', {
+    failureRedirect: '/login',
+    successRedirect: '/',
+    session: false
+  })
+)
 
 module.exports = router

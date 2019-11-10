@@ -6,8 +6,7 @@ const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
 const passport = require('passport')
-require('./configs/passport')(passport)
-const session = require('express-session')
+require('./configs/passport')
 const rootRouter = require('./router')
 
 const { NODE_ENV, PORT } = process.env
@@ -24,13 +23,8 @@ const main = async () => {
     await app.prepare()
 
     server.use(bodyParser.json())
-    server.use(bodyParser.urlencoded({ extended: false }))
-    server.use('/api', apiRouter)
     server.use(passport.initialize())
-    server.use(passport.session())
-    server.use(session({
-      secret: "secret"
-    }))
+    server.use('/api', apiRouter)
     server.use('/', rootRouter)
     server.get('*', (req, res) => handle(req, res))
 
