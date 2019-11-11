@@ -1,25 +1,22 @@
 const { Router } = require('express')
-const axios = require('axios')
+const proxy = require('http-proxy-middleware')
 
-const { WATCH_MANAGER_ADDRESS } = process.env
+const { WATCH_MANAGER_ADDRESS, USER_MANAGER_ADDRESS } = process.env
 const router = Router()
 
-router.get('/watch-manager', async (req, res) => {
-  try {
-    const { data } = await axios.get(WATCH_MANAGER_ADDRESS)
-    res.json(data)
-  } catch (err) {
-    res.sendStatus(500)
+const proxyOptions = {
+  target: 'http://www.example.org', // this option must be specified, but not used
+  router: {
+    '/api/watch-manager': WATCH_MANAGER_ADDRESS,
+    '/api/user-manager': USER_MANAGER_ADDRESS
+  },
+  changeOrigin: true,
+  pathRewrite: {
+    '/api/watch-manager': '/',
+    '/api/user-manager': '/'
   }
-})
+}
 
-router.post('/watch-manager', async (req, res) => {
-  try {
-    const { data } = await axios.post(WATCH_MANAGER_ADDRESS, req.body)
-    res.json(data)
-  } catch (err) {
-    res.sendStatus(500)
-  }
-})
+router.use('/', proxy(proxyOptions))
 
 module.exports = router

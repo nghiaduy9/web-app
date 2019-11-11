@@ -22,6 +22,7 @@ $ yarn start # yarn dev for development
 - `NODE_ENV` (string): "development" or "production" environment
 - `PORT` (number): Port number to run the server
 - `WATCH_MANAGER_ADDRESS` (string): Address of watch manager service
+- `USER_MANAGER_ADDRESS` (string): Address of user manager service
 
 ### API Routes
 
