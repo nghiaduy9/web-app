@@ -26,6 +26,10 @@ $ yarn start # yarn dev for development
 
 ### API Routes
 
-#### `/api/watch-manager`
+#### 1. `/api/user-manager`
 
-> Redirect to [watch manager service routes](https://github.com/night-watch-project/watch-manager#routes)
+> Proxy to [user manager service](https://github.com/night-watch-project/user-manager#routes)
+
+#### 2. `/api/watch-manager`
+
+> Proxy to [watch manager service](https://github.com/night-watch-project/watch-manager#routes)
