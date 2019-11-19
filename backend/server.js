@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const next = require('next')
 const apiRouter = require('./api/router')
 const passport = require('passport')
-require('./configs/passport')
+require('./loaders/passport')
 const rootRouter = require('./router')
 
 const { NODE_ENV, PORT } = process.env

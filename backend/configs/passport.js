@@ -1,4 +1,3 @@
-const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
@@ -13,8 +12,8 @@ const {
   JWT_SECRET
 } = process.env
 
-passport.use(
-  new FacebookStrategy(
+function createNewFacebookStrategy() {
+  return new FacebookStrategy(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
@@ -39,7 +38,9 @@ passport.use(
             }
           }
           const response = await axios.post(createUserUrl, user)
-          user._id = response.data._id
+          if (response.status == 200) {
+            user._id = response.data._id
+          } else return done('can not create user')
         }
         const jwtPayload = {
           id: user._id
@@ -51,10 +52,10 @@ passport.use(
       }
     }
   )
-)
+}
 
-passport.use(
-  new JwtStrategy(
+function createNewJwtStrategy() {
+  return new JwtStrategy(
     {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: JWT_SECRET
@@ -71,12 +72,9 @@ passport.use(
       }
     }
   )
-)
+}
 
-passport.serializeUser(function(user, done) {
-  done(null, user)
-})
-
-passport.deserializeUser(function(user, done) {
-  done(null, user)
-})
+module.exports = {
+  createNewFacebookStrategy,
+  createNewJwtStrategy
+}
