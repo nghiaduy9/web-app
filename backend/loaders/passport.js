@@ -1,5 +1,5 @@
 const passport = require('passport')
-const { createNewFacebookStrategy, createNewJwtStrategy } = require('../loaders/passport')
+const { createNewFacebookStrategy, createNewJwtStrategy } = require('../configs/passport')
 
 passport.use(createNewFacebookStrategy())
 passport.use(createNewJwtStrategy())

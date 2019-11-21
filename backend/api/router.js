@@ -19,24 +19,6 @@ const proxyOptions = {
   }
 }
 
-router.use('/', proxy(proxyOptions))
-
-router.get('/watch-manager', passport.authenticate('jwt', {session: false}), async (req, res) => {
-  try {
-    const { data } = await axios.get(WATCH_MANAGER_ADDRESS)
-    res.json(data)
-  } catch (err) {
-    res.sendStatus(500)
-  }
-})
-
-router.post('/watch-manager', passport.authenticate('jwt', {session: false}), async (req, res) => {
-  try {
-    const { data } = await axios.post(WATCH_MANAGER_ADDRESS, req.body)
-    res.json(data)
-  } catch (err) {
-    res.sendStatus(500)
-  }
-})
+router.use('/', passport.authenticate('jwt', {session: false}), proxy(proxyOptions))
 
 module.exports = router
