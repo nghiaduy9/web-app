@@ -12,6 +12,6 @@ passport.deserializeUser(function(user, done) {
   done(null, user)
 })
 
-module.exports = function(server) {
+module.exports = (server) => {
   server.use(passport.initialize())
 }
