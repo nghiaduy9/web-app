@@ -8,7 +8,7 @@ router.get(
   '/auth/facebook/cb',
   passport.authenticate('facebook', {
     failureRedirect: '/login',
-    successRedirect: '/',
+    successRedirect: '/dashboard',
     session: false
   })
 )

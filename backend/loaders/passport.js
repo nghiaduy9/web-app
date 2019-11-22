@@ -1,8 +1,8 @@
 const passport = require('passport')
-const { createNewFacebookStrategy, createNewJwtStrategy } = require('../configs/passport')
+const { facebookStrategy, jwtStrategy } = require('../configs/passport')
 
-passport.use(createNewFacebookStrategy())
-passport.use(createNewJwtStrategy())
+passport.use(facebookStrategy)
+passport.use(jwtStrategy)
 
 passport.serializeUser(function(user, done) {
   done(null, user)
@@ -11,3 +11,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user)
 })
+
+module.exports = function(server) {
+  server.use(passport.initialize())
+}

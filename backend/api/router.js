@@ -1,5 +1,4 @@
 const { Router } = require('express')
-const axios = require('axios')
 const passport = require('passport')
 const proxy = require('http-proxy-middleware')
 
