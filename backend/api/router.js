@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const passport = require('passport')
 const proxy = require('http-proxy-middleware')
 
 const { WATCH_MANAGER_ADDRESS, USER_MANAGER_ADDRESS } = process.env
@@ -17,6 +18,6 @@ const proxyOptions = {
   }
 }
 
-router.use('/', proxy(proxyOptions))
+router.use('/', passport.authenticate('jwt', {session: false}), proxy(proxyOptions))
 
 module.exports = router

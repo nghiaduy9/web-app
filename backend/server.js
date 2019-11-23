@@ -21,6 +21,7 @@ const main = async () => {
     await app.prepare()
 
     server.use(bodyParser.json())
+    require('./loaders/passport')(server)
     server.use('/api', apiRouter)
     server.use('/', rootRouter)
     server.get('*', (req, res) => handle(req, res))
