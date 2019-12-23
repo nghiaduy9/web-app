@@ -4,19 +4,13 @@ const ExtractJwt = require('passport-jwt').ExtractJwt
 const jwt = require('jsonwebtoken')
 const axios = require('axios')
 
-const {
-  FB_APP_ID,
-  FB_APP_SECRET,
-  FB_AUTH_CALLBACK_URL,
-  USER_MANAGER_ADDRESS,
-  JWT_SECRET
-} = process.env
+const { FB_APP_ID, FB_APP_SECRET, USER_MANAGER_ADDRESS, JWT_SECRET } = process.env
 
 const facebookStrategy = new FacebookStrategy(
   {
     clientID: FB_APP_ID,
     clientSecret: FB_APP_SECRET,
-    callbackURL: FB_AUTH_CALLBACK_URL,
+    callbackURL: '/auth/facebook/cb',
     profileFields: ['email', 'name']
   },
   async (accessToken, refreshToken, profile, done) => {

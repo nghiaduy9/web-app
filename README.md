@@ -19,7 +19,6 @@
 - `NOTIFICATION_SERVICE_ADDRESS` (string): Address of notification-service
 - `FB_APP_ID` (string): Facebook app ID
 - `FB_APP_SECRET` (string): Facebook app secret
-- `FB_AUTH_CALLBACK_URL` (string): Callback URL after authenticating with Facebook
 - `JWT_SECRET` (string): JWT secret
 
 ### API Routes
