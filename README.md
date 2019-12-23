@@ -12,13 +12,11 @@
 
 - `NODE_ENV` (string): "development" or "production" environment
 - `PORT` (number): Port number to run the server
-
 - `USER_MANAGER_ADDRESS` (string): Address of user-manager
 - `WATCH_MANAGER_ADDRESS` (string): Address of watch-manager
 - `SCHEDULER_ADDRESS` (string): Address of scheduler
 - `CRAWLER_ADDRESS` (string): Address of crawler
 - `NOTIFICATION_SERVICE_ADDRESS` (string): Address of notification-service
-
 - `FACEBOOK_APP_ID` (string): ID of the app created on Facebook
 - `FACEBOOK_APP_SECRET` (string): Secret of the app created on Facebook
 - `FACEBOOK_CALLBACK_URL` (string): Callback URL after authenticated
