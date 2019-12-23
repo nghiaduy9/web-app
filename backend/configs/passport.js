@@ -5,18 +5,18 @@ const jwt = require('jsonwebtoken')
 const axios = require('axios')
 
 const {
-  FACEBOOK_APP_ID,
-  FACEBOOK_APP_SECRET,
-  FACEBOOK_CALLBACK_URL,
+  FB_APP_ID,
+  FB_APP_SECRET,
+  FB_AUTH_CALLBACK_URL,
   USER_MANAGER_ADDRESS,
   JWT_SECRET
 } = process.env
 
 const facebookStrategy = new FacebookStrategy(
   {
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: FACEBOOK_CALLBACK_URL,
+    clientID: FB_APP_ID,
+    clientSecret: FB_APP_SECRET,
+    callbackURL: FB_AUTH_CALLBACK_URL,
     profileFields: ['email', 'name']
   },
   async (accessToken, refreshToken, profile, done) => {
