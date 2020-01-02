@@ -1,9 +1,10 @@
 const path = require('path')
-const express = require('express')
 const bodyParser = require('body-parser')
+const express = require('express')
 const next = require('next')
 const apiRouter = require('./api/router')
 const rootRouter = require('./router')
+const passportLoader = require('./loaders/passport')
 
 const { NODE_ENV, PORT } = process.env
 
@@ -19,7 +20,7 @@ const main = async () => {
     await app.prepare()
 
     server.use(bodyParser.json())
-    require('./loaders/passport')(server)
+    passportLoader(server)
     server.use('/api', apiRouter)
     server.use('/', rootRouter)
     server.get('*', (req, res) => handle(req, res))
