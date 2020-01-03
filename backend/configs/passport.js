@@ -1,6 +1,5 @@
 const FacebookStrategy = require('passport-facebook').Strategy
-const JwtStrategy = require('passport-jwt').Strategy
-const ExtractJwt = require('passport-jwt').ExtractJwt
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt')
 const jwt = require('jsonwebtoken')
 const axios = require('axios')
 
