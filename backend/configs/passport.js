@@ -1,5 +1,5 @@
 const { Strategy: FacebookStrategy } = require('passport-facebook')
-const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt')
+const { Strategy: JwtStrategy } = require('passport-jwt')
 const axios = require('axios')
 
 const { FB_APP_ID, FB_APP_SECRET, JWT_SECRET, USER_MANAGER_ADDRESS } = process.env
