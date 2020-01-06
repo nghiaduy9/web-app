@@ -13,7 +13,7 @@ router.get(
   passport.authenticate('facebook', { failureRedirect: '/', session: false }),
   (req, res) => {
     const token = jwt.sign(req.user, JWT_SECRET)
-    res.cookie('auth', 'Bearer ' + token, { httpOnly: true }).redirect('/dashboard')
+    res.cookie('jwt', token, { httpOnly: true }).redirect('/dashboard')
   }
 )
 

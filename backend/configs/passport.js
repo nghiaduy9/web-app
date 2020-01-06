@@ -39,7 +39,7 @@ const facebookStrategy = new FacebookStrategy(
 
 const jwtStrategy = new JwtStrategy(
   {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: (req) => req.cookies['jwt'],
     secretOrKey: JWT_SECRET
   },
   async (jwtPayload, done) => {
