@@ -51,4 +51,4 @@
 
 #### 2. `/auth/facebook/cb`
 
-> Callback after authenticating with Facebook
+> Callback after authenticating with Facebook. Redirect to `/dashboard` on success, to `/login` on failure.
