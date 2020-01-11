@@ -13,7 +13,7 @@ class MyDocument extends Document {
             src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js'
           />
           <script
-            nomodule=''
+            noModule=''
             src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js'
           />
         </body>
