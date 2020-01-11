@@ -8,7 +8,14 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script noModule src='https://unpkg.com/ionicons@4.6.2/dist/ionicons.js' />
+          <script
+            type='module'
+            src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js'
+          />
+          <script
+            nomodule=''
+            src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js'
+          />
         </body>
       </Html>
     )
