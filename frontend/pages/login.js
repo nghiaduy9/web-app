@@ -32,7 +32,7 @@ const LoginButton = (props) => {
   const { service, disabled } = props
   return (
     <LinkedButton
-      href={`/auth/${service}`}
+      href={`/api/auth-service/${service}`}
       fullWidth={true}
       icon={<ion-icon name={`logo-${service}`} />}
       text={service}
