@@ -1,4 +1,5 @@
 import { LinkedButton } from '../components/buttons'
+import Layout from '../components/layout'
 
 const LoginForm = () => (
   <form onSubmit={(event) => event.preventDefault()}>
@@ -34,31 +35,33 @@ const LoginButton = (props) => {
 }
 
 const Login = () => (
-  <section id='login-page' className='is-flex'>
-    <div className='box is-flex has-background-white-bis'>
-      <h4 className='title is-4 has-text-centered is-marginless'>Log In</h4>
-      <hr />
-      <LoginForm />
-      <hr />
-      <h6 className='subtitle is-6'>Or log in with:</h6>
-      <div className='buttons'>
-        <LoginButton service='facebook' />
-        <LoginButton service='google' disabled />
+  <Layout>
+    <section className='is-flex'>
+      <div className='box is-flex has-background-white-bis'>
+        <h4 className='title is-4 has-text-centered is-marginless'>Log In</h4>
+        <hr />
+        <LoginForm />
+        <hr />
+        <h6 className='subtitle is-6'>Or log in with:</h6>
+        <div className='buttons'>
+          <LoginButton service='facebook' />
+          <LoginButton service='google' disabled />
+        </div>
       </div>
-    </div>
-    <style jsx>{`
-      #login-page {
-        width: 100vw;
-        height: 100vh;
-        align-items: center;
-        justify-content: center;
-      }
-      .box {
-        flex-direction: column;
-        justify-content: center;
-      }
-    `}</style>
-  </section>
+      <style jsx>{`
+        section {
+          width: 100vw;
+          height: 100vh;
+          align-items: center;
+          justify-content: center;
+        }
+        .box {
+          flex-direction: column;
+          justify-content: center;
+        }
+      `}</style>
+    </section>
+  </Layout>
 )
 
 export default Login
