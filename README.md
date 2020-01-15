@@ -11,6 +11,7 @@
 ## Environment Variables
 
 - `NODE_ENV` (string): "development" or "production" environment
+- `HOST` (string): IP address or domain name on which this process is running (including protocol and port)
 - `PORT` (number): Port number to run the server
 - `USER_MANAGER_ADDRESS` (string): Address of user-manager
 - `WATCH_MANAGER_ADDRESS` (string): Address of watch-manager

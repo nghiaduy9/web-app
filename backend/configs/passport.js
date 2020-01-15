@@ -2,13 +2,20 @@ const { Strategy: FacebookStrategy } = require('passport-facebook')
 const { Strategy: JwtStrategy } = require('passport-jwt')
 const axios = require('axios')
 
-const { FB_APP_ID, FB_APP_SECRET, JWT_SECRET, USER_MANAGER_ADDRESS } = process.env
+const {
+  PORT,
+  HOST = `http://localhost:${PORT}`,
+  FB_APP_ID,
+  FB_APP_SECRET,
+  JWT_SECRET,
+  USER_MANAGER_ADDRESS
+} = process.env
 
 const facebookStrategy = new FacebookStrategy(
   {
     clientID: FB_APP_ID,
     clientSecret: FB_APP_SECRET,
-    callbackURL: '/api/auth-service/facebook/cb',
+    callbackURL: `${HOST}/api/auth-service/facebook/cb`,
     profileFields: ['id', 'displayName', 'picture.type(large)', 'emails']
   },
   async (accessToken, refreshToken, profile, done) => {
