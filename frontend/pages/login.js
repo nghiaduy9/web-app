@@ -12,6 +12,14 @@ const LoginForm = () => (
       </div>
     </div>
     <div className='field'>
+      <div className='control has-icons-left'>
+        <span className='icon is-left'>
+          <ion-icon name='key' />
+        </span>
+        <input className='input' type='password' placeholder='Password' disabled />
+      </div>
+    </div>
+    <div className='field'>
       <div className='control'>
         <button className='button is-fullwidth is-outlined is-success' disabled>
           Log in
@@ -22,15 +30,18 @@ const LoginForm = () => (
 )
 
 const LoginButton = (props) => {
-  const { service, disabled } = props
+  const { service, style, disabled } = props
   return (
     <LinkedButton
-      className='button is-dark is-fullwidth is-capitalized'
+      className='button is-fullwidth is-capitalized has-text-light'
       href={`/api/auth-service/${service}`}
-      icon={<ion-icon name={`logo-${service}`} />}
-      text={service}
+      style={style}
       disabled={disabled}
-    />
+    >
+      <ion-icon name={`logo-${service}`} />
+      <span>&nbsp;</span>
+      {service}
+    </LinkedButton>
   )
 }
 
@@ -44,8 +55,8 @@ const Login = () => (
         <hr />
         <h6 className='subtitle is-6'>Or log in with:</h6>
         <div className='buttons'>
-          <LoginButton service='facebook' />
-          <LoginButton service='google' disabled />
+          <LoginButton service='facebook' style={{ backgroundColor: '#3b5998' }} />
+          <LoginButton service='google' style={{ backgroundColor: '#db4437' }} disabled />
         </div>
       </div>
       <style jsx>{`

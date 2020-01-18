@@ -1,76 +1,83 @@
-const Sidebar = (props) => {
+const Sidebar = () => {
   return (
-    <aside className='is-narrow-mobile section is-hidden-mobile'>
-      <div
-        className='avatar'
-      >
-        <figure class='image is-128x128'>
+    <section className='section has-background-white-bis'>
+      <div className='avatar is-flex'>
+        <figure className='image is-128x128'>
           <img
-            class='is-rounded'
+            className='is-rounded'
             src='https://bulma.io/images/placeholders/128x128.png'
           />
         </figure>
       </div>
-      <div
-        className='avatar'
-      >
-        <span className='is-size-5 display-name'>Kokomi</span>
-      </div>
+      <h6 className='title is-6 has-text-centered'>
+        Kokomi&nbsp;&nbsp;&nbsp;
+        <span className='tag is-rounded is-dark'>normal</span>
+      </h6>
 
-      <p className='menu-label is-hidden-touch'>MANAGE WATCHES</p>
+      <p className='menu-label'>MY WATCHES</p>
       <ul className='menu-list'>
         <li>
-          <a href='#' className=''>
+          <a href='#'>
             <span className='icon'>
-              <ion-icon name='eye'></ion-icon>
-            </span>{' '}
-            My watches
+              <ion-icon name='eye' />
+            </span>
+            <span>&nbsp;Watch List</span>
           </a>
         </li>
         <li>
-          <a href='#' className=''>
+          <a href='#'>
             <span className='icon'>
-              <ion-icon name='analytics'></ion-icon>
-            </span>{' '}
-            Analytics
+              <ion-icon name='analytics' />
+            </span>
+            <span>&nbsp;Analytics</span>
           </a>
         </li>
       </ul>
-      <p className='menu-label is-hidden-touch'>ACCOUNT</p>
+
+      <p className='menu-label'>MY ACCOUNT</p>
       <ul className='menu-list'>
         <li>
-          <a href='#' className=''>
+          <a href='#'>
             <span className='icon'>
-              <ion-icon name='person'></ion-icon>
-            </span>{' '}
-            Profile
+              <ion-icon name='person' />
+            </span>
+            <span>&nbsp;Profile</span>
           </a>
         </li>
         <li>
-          <a href='#' className=''>
+          <a href='#'>
             <span className='icon'>
-              <ion-icon name='log-out'></ion-icon>
-            </span>{' '}
-            Logout
+              <ion-icon name='settings' />
+            </span>
+            <span>&nbsp;Settings</span>
+          </a>
+        </li>
+        <li>
+          <a className='has-text-danger' href='#'>
+            <span className='icon'>
+              <ion-icon name='log-out' />
+            </span>
+            <span>&nbsp;Logout</span>
           </a>
         </li>
       </ul>
       <style jsx>{`
-        aside {
-          background-color: #f0f3f5;
+        section {
           height: 100%;
         }
         .avatar {
-          display: flex;
+          align-items: center;
           justify-content: center;
-          justify-items: center;
-          margin-bottom: 1em;
+          margin-bottom: 1rem;
         }
-        .display-name {
-          margin-bottom: 1em;
+        .tag {
+          font-weight: normal;
+        }
+        li > a > span {
+          vertical-align: middle;
         }
       `}</style>
-    </aside>
+    </section>
   )
 }
 
