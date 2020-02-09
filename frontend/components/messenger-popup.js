@@ -26,7 +26,7 @@ const MessengerPopup = memo(function MessengerPopup() {
     const el = document.createElement('div')
     el.className = 'fb-customerchat'
     el.setAttribute('attribution', 'setup_tool')
-    el.setAttribute('page_id', '106401997604060')
+    el.setAttribute('page_id', '2402714883109302')
     document.body.appendChild(el)
     FB.XFBML.parse()
   })
