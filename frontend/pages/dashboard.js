@@ -1,6 +1,7 @@
 import Layout from '../components/layout'
 import Sidebar from '../components/sidebar'
 import WatchCard from '../components/watch-card'
+import MessengerPopup from '../components/messenger-popup'
 import { LinkedButton } from '../components/buttons'
 
 const Dashboard = () => {
@@ -17,6 +18,7 @@ const Dashboard = () => {
           </div>
         </div>
         <WatchCard />
+        <MessengerPopup />
       </section>
       <style jsx>{`
         .field {
