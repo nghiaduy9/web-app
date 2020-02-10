@@ -1,16 +1,23 @@
-const Sidebar = () => {
+import { useEffect, useContext } from 'react'
+import { observer } from 'mobx-react-lite'
+import { userStoreContext } from '../stores/user'
+
+const Sidebar = observer(() => {
+  const userStore = useContext(userStoreContext)
+
+  useEffect(() => {
+    userStore.fetchUser()
+  })
+
   return (
     <section className='section has-background-light'>
       <div className='avatar is-flex'>
         <figure className='image is-128x128'>
-          <img
-            className='is-rounded'
-            src='https://bulma.io/images/placeholders/128x128.png'
-          />
+          <img className='is-rounded' src={userStore.avatar} />
         </figure>
       </div>
       <h6 className='title is-6 has-text-centered'>
-        Hoàng Kim Minh&nbsp;&nbsp;&nbsp;
+        {userStore.name}&nbsp;&nbsp;&nbsp;
         <span className='tag is-rounded is-dark'>normal</span>
       </h6>
 
@@ -82,6 +89,6 @@ const Sidebar = () => {
       `}</style>
     </section>
   )
-}
+})
 
 export default Sidebar

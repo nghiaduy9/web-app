@@ -1,4 +1,5 @@
 import { memo, useEffect } from 'react'
+import { FB_PAGE_ID } from '../constants'
 
 const useFacebook = (cb) => {
   useEffect(() => {
@@ -12,7 +13,7 @@ const useFacebook = (cb) => {
       }
       const fjs = document.getElementsByTagName('script')[0]
       if (document.getElementById('facebook-jssdk')) return
-      let js = document.createElement('script')
+      const js = document.createElement('script')
       js.id = 'facebook-jssdk'
       js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js'
       fjs.parentNode.insertBefore(js, fjs)
@@ -21,12 +22,12 @@ const useFacebook = (cb) => {
   }, [])
 }
 
-const MessengerPopup = memo(function MessengerPopup() {
+const MessengerPopup = memo(() => {
   useFacebook((FB) => {
     const el = document.createElement('div')
     el.className = 'fb-customerchat'
     el.setAttribute('attribution', 'setup_tool')
-    el.setAttribute('page_id', '2402714883109302')
+    el.setAttribute('page_id', FB_PAGE_ID)
     document.body.appendChild(el)
     FB.XFBML.parse()
   })
